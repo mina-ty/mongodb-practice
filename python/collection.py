@@ -13,7 +13,7 @@ client = MongoClient(MONGOHOST, username=MONGOUSER, password=MONGOPASS, connectT
 thisdb = client.wka4sp
 
 # create a new collection
-pokemon_collection = thisdb.collection
+pokemon_collection = thisdb.pokemon
 
 # insert five (5) documents
 doc1 = {
@@ -55,4 +55,6 @@ pokemon_collection.insert_many([doc1, doc2, doc3, doc4, doc5])
 
 # write a query that displays exactly three (3) of those documents
 query = pokemon_collection.find({"region": "Unova"})
-print(f"Unovan Starters:\n{query}")
+print(f"Unovan Starters:")
+for pokemon in query:
+    print(pokemon)
